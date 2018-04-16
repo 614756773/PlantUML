@@ -1,0 +1,65 @@
+@startuml
+
+readercat "1" -- "*" reader
+borrow_1 "1" -- "1" borrowId_1
+borrow_1 "1" -- "1" punish
+borrowId_1 -> reader
+borrowId_1 -> book_1
+borrow_2 "1" -- "1" borrowId_2
+borrowId_2 -> reader
+borrowId_2 -> book_2
+object readercat {
+  id = 1
+  name = "大会员"
+}
+object reader{
+    id= 1
+    studentno=201510414117
+    name="秦著"
+    password= 123456789
+    sex= "male"
+    belong="1"
+    borrowcount=16
+    picture="a.png"
+
+}
+object borrow_1{
+  id= 1
+  punishid=2
+  isreturn=false
+  isrenew=true
+}
+object borrowId_1{
+  bookid=12
+  readerid=1
+}
+object borrow_2{
+  id= 2
+  punishid=null
+  isreturn=false
+  isrenew=true
+}
+object borrowId_2{
+  bookid=13
+  readerid=1
+}
+object book_1{
+  	id=12
+  	bookcat=1
+  	bookname="高等数学"
+  	isbn="2015-13-1567-45"
+  	publish=1
+}
+object book_2{
+  	id=13
+  	bookcat=2
+  	bookname="计算机组成原理"
+  	isbn="2123-13-1567-45"
+  	publish=null
+}
+object punish{
+ id=2
+ hourlong=3
+ fine=200
+}
+@enduml

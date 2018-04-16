@@ -1,0 +1,60 @@
+@startuml
+package com.qinzhu.dao <<Folder>> {
+  interface BookDao{
+  	+{abstract} int findAllSize();
+    +{abstract} void saveorupdate(Book book);
+    +{abstract} void deleteOne(int id);
+    +{abstract} Book findOne(int id);
+    +{abstract} List<Book> findAll();
+    +{abstract} int selectLastId();
+  }
+  interface BorrowDao{
+  	+{abstract} int findAllSize();
+  	+{abstract} void saveorupdate(Borrow borrow);
+  	+{abstract} void deleteOne(BorrowId id);
+  	+{abstract} Borrow findOne(BorrowId id);
+  	+{abstract} List<Borrow> findList(int readerid);
+  	+{abstract} List<Borrow> findAll();
+  }
+  interface ReaderDao{
+  	+{abstract}  int findAllSize();
+  	+{abstract}  void saveorupdate(Reader reader);
+  	+{abstract} void deleteOne(int id);
+  	+{abstract} Reader findOne(int id);
+  	+{abstract} Reader findOneBystuno(int stuno);
+  	+{abstract} List<Reader> findAll();
+  	+{abstract} int selectLastId();
+  }
+}
+package com.qinzhu.daoImpl <<Folder>> {
+    BookDao <|.. BookDaoImpl
+    BorrowDao <|.. BorrowDaoImpl
+    ReaderDao <|.. ReaderDaoImpl
+    class BookDaoImpl{
+      	+ int findAllSize();
+        + void saveorupdate(Book book);
+        + void deleteOne(int id);
+        + Book findOne(int id);
+        + List<Book> findAll();
+        + int selectLastId();
+    }
+    class BorrowDaoImpl{
+      	+ int findAllSize();
+      	+ void saveorupdate(Borrow borrow);
+      	+ void deleteOne(BorrowId id);
+      	+ Borrow findOne(BorrowId id);
+      	+ List<Borrow> findList(int readerid);
+      	+ List<Borrow> findAll();
+    }
+    class ReaderDaoImpl{
+      	+  int findAllSize();
+      	+  void saveorupdate(Reader reader);
+      	+ void deleteOne(int id);
+      	+ Reader findOne(int id);
+      	+ Reader findOneBystuno(int stuno);
+      	+ List<Reader> findAll();
+      	+ int selectLastId();
+    }
+}
+
+@enduml

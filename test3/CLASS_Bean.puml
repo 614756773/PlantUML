@@ -1,0 +1,57 @@
+@startuml
+scale 750 width
+package com.qinzhu.bean <<Folder>> {
+  Borrow"1"*-"1"BorrowId
+  Reader "1"-- "*" Book
+  ReaderCat"1" o- "1..*"Reader
+  BookCat"1" o- "1..*"Book
+  Reader"1"--"*"Punish
+  class Book{
+  ..列举了部分私有属性..
+  	- Integer id;
+  	- Integer bookcat;
+  	- String bookname;
+  	- String isbn;
+  	- String publish;
+  	- Date pubdate;
+  }
+  class BookCat{
+    - Integer id;
+    - Integer parentid;
+    - Boolean isparent;
+    - String name;
+  }
+  class Borrow{
+    - BorrowId id;
+    - Integer punishid;
+    - Boolean isreturn;
+    - Boolean isrenew;
+    - Date time;
+  }
+  class BorrowId{
+    - Integer bookid;
+    - Integer readerid;
+  }
+  class Punish{
+  - Integer id;
+  - Integer hourlong;
+  - Float fine;
+  }
+  class Reader{
+  	- Integer id;
+  	- Integer readercat;
+  	- Integer studentno;
+  	- String password;
+  	- String name;
+  	- String sex;
+  	- String belong;
+  	- Integer borrowcount;
+  	- String picture;
+  }
+  class ReaderCat{
+  	- Integer id;
+  	- String name;
+  }
+}
+
+@enduml
