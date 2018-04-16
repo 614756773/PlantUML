@@ -165,7 +165,7 @@ object readercat {
 @enduml
 ``` 
 #### 对象图如下：
-![class](readercat.png)
+![class](readercat.PNG)
 
 ### 2.2 类Reader的对象图
 #### 源码如下：
@@ -181,7 +181,7 @@ object readercat {
 @enduml
 ``` 
 #### 对象图如下：
-![class](reader.png)
+![class](reader.PNG)
 
 ### 2.3 类Book的对象图
 #### 源码如下：
@@ -195,7 +195,7 @@ object book_1{
 }
 ```
 #### 对象图如下：
-![class](book_1.png)
+![class](book_1.PNG)
 
 ### 2.4 类Borrow的对象图
 #### 源码如下：
@@ -208,7 +208,7 @@ object borrow_1{
 }
 ```
 #### 对象图如下：
-![class](borrow_1.png)
+![class](borrow_1.PNG)
 
 ### 2.5 类BorrowId的对象图
 #### 源码如下：
@@ -220,7 +220,7 @@ object borrowId_1{
 ```
 
 #### 对象图如下：
-![class](borrowid_1.png)
+![class](borrowid_1.PNG)
 
 ### 2.6 类Punish的对象图
 #### 源码如下：
@@ -231,7 +231,7 @@ object borrowId_1{
 }
 ```
 #### 对象图如下：
-![class](punish.png)
+![class](punish.PNG)
 
 ### 2.7 对象们的关系图:
 ![class](OBJECT.png)
