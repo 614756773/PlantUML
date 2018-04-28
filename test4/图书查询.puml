@@ -1,0 +1,18 @@
+@startuml
+hide footbox
+actor 读者或者管理员 as d
+participant 查询界面 as c
+participant bookcat
+participant book
+d->c:进入查询界面
+activate d
+note right:不需要登陆
+activate c
+c->bookcat:选择图书类目
+activate bookcat
+bookcat -> book:查询图书
+activate book
+book-->c:显示书籍信息
+deactivate book
+c-->d:得到相关信息
+@enduml

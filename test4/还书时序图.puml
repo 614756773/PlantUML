@@ -1,0 +1,40 @@
+@startuml
+hide footbox
+actor 读者
+actor 管理员
+participant 还书界面
+participant reader
+participant borrow
+participant punish
+[->读者:进入图书馆
+activate 读者
+读者->管理员:请求还书
+activate 管理员
+管理员->还书界面:login()
+note right:只在第一次进入系统时登陆
+activate 还书界面
+还书界面-->还书界面:success
+activate 还书界面 #DarkSalmon
+还书界面->reader:查询reader
+activate reader
+reader->borrow:查询所借阅书籍
+activate borrow
+borrow->punish:查询是否有超时未还书籍
+activate punish
+punish-->punish:yes
+activate punish #DarkSalmon
+punish-->读者:请求缴纳罚金
+读者->punish:缴纳
+deactivate punish
+punish-->borrow:请求移除超时未还书籍
+deactivate punish
+borrow-->还书界面:移除超时未还未还书籍\n移除归还书籍
+deactivate borrow
+deactivate 还书界面
+还书界面-->管理员:显示还书成功
+deactivate 还书界面
+管理员-->读者:还书成功
+deactivate 管理员
+[<--读者:离开图书馆
+deactivate 读者
+@enduml

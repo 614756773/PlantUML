@@ -1,0 +1,46 @@
+@startuml
+hide footbox
+actor 读者
+actor 管理员
+participant 借书界面
+participant reader
+participant borrow
+participant punish
+participant bookcat
+participant book
+[->读者:进入图书馆
+activate 读者
+读者->管理员:请求借书
+activate 管理员
+管理员->借书界面:login()
+note right:只在第一次进入系统时登陆
+activate 借书界面
+借书界面-->借书界面:success
+activate 借书界面 #SkyBlue
+借书界面->reader:查询读者
+activate reader
+reader->borrow:查询已经借阅的书籍
+note right:当读者想借阅书籍时\n首先要保证不能有未还书籍
+activate borrow
+borrow->punish:查询是否有超时未还书籍
+activate punish
+punish-->borrow:no
+deactivate punish
+借书界面->bookcat:查询借阅书籍类目
+activate bookcat
+note right:先查询类目再查询详细书籍\n目的是为了提高系统效率
+bookcat-->借书界面:显示类目
+deactivate bookcat
+借书界面->book:查询当前要借阅的书籍
+activate book
+book-->book:书籍存在\n且库存足够
+activate book #SkyBlue
+book-->borrow:增加借阅记录
+borrow->book:库存减一
+deactivate book
+book-->借书界面:显示可以借阅
+deactivate book
+借书界面-->管理员:确认借阅
+管理员-->读者:借书成功
+[<-读者:心满意足离开图书馆
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+hide footbox
+actor 管理员
+participant 维护书籍界面
+participant bookcat
+participant book
+管理员->维护书籍界面:login()
+activate 管理员
+activate 维护书籍界面
+维护书籍界面-->维护书籍界面:success
+activate 维护书籍界面 #SkyBlue
+维护书籍界面->bookcat:维护书目
+activate bookcat
+bookcat-->维护书籍界面:更新成功
+维护书籍界面->book:维护书籍
+activate book
+book-->维护书籍界面:更新成功
+维护书籍界面-->管理员:退出
+deactivate book
+deactivate bookcat
+deactivate bookcat
+@enduml

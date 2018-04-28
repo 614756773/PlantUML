@@ -1,0 +1,18 @@
+@startuml
+hide footbox
+actor 读者 as d
+participant 查询界面 as c
+participant 预定界面 as y
+participant book
+d->c:login()
+activate d
+activate c
+c->book:查询书籍
+activate book
+book-->c:显示书籍信息
+deactivate c
+y->book:预定书籍
+activate y
+book-->y:预定成功\n图书库存减一
+y-->d:预定成功
+@enduml
