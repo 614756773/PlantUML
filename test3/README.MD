@@ -21,7 +21,8 @@ package com.qinzhu.bean <<Folder>> {
   	- Integer id;
   	- Integer bookcat;
   	- String bookname;
-  	- String isbn;
+  	- Float price;
+  	-Integer borrowCount
   	- String publish;
   	- Date pubdate;
   }
