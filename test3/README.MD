@@ -70,7 +70,7 @@ package com.qinzhu.bean <<Folder>> {
 
 ### 1.2. Bean类图如下：
 
-![class](CLASS_Bean.png)
+![class](aa.png)
 
 ### 1.3. 类图说明：
 book图书类，bookcat图书类目类，reader读者类，readercat读者类目类
