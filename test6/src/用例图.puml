@@ -1,0 +1,28 @@
+@startuml
+left to right direction
+:users:
+users<|--:student:
+users<|--:teacher:
+rectangle 用户用例集{
+    users-->(登陆)
+    users-->(登出)
+    users-->(查看信息)
+    users-->(修改信息)
+    users-->(修改密码)
+    users-->(选课)
+    users-->(查看课程)
+}
+rectangle 学生用例集{
+    student-->(查看自己的成绩)
+    student-->(查看老师布置的实验)
+}
+rectangle 教师用例集合{
+    teacher-->(查看所有学生成绩)
+    teacher-->(查看自己发布的实验)
+    teacher-->(发布实验)
+    teacher-->(修改实验)
+    teacher-->(删除实验)
+    teacher-->(评分)
+    teacher-->(查看学生完成的实验)
+}
+@enduml

@@ -1,0 +1,73 @@
+@startuml
+title 基于GitHub的实验管理平台--类图
+abstract class User{
+    int id
+    string name
+    string github（github地址）
+    string sex
+
+}
+User<|--Student
+class Student{
+    int studentNumber（学号）
+    string nation（民族）
+}
+User<|--Teacher
+class Teacher{
+    int teacherNumber（工号）
+    string title（职称）
+}
+class Login{
+    int id
+    int username（学生账号就是学号，老师账号是工号）
+    string password
+    int role（角色）
+}
+class Term{
+    int id
+    int term（学期）
+}
+class Scoreitem{
+    int id
+    string desc（评分项）
+    int value（分值）
+}
+class Course{
+    int id
+    string name
+    float credit（学分）
+    int term_id（与Term类的id关联）
+}
+class Experiment{
+    int id
+    string name（实验名）
+    Date date（实验发布时间）
+    string desc（实验描述）
+    int course_id（与Course类的id关联）
+}
+class Score{
+    int id
+    float score（成绩）
+    string comment（评论）
+    int student_id（学生id）
+    int experiment_id（实验id）
+    int scoreitem_id（评分项id）
+}
+note right:该类的实例代表学生\n某一个实验的某一项的得分
+class Electivecourse{
+    int id
+    int teacher_id
+    int student_id
+    int course_id
+}
+note right:“选课”类，teacher_id和\nstudent_id总是有一个为空，\n表示学生或老师的选课
+
+Course "n" -- "1" Term
+Electivecourse "1" -- "1" Course
+Student "1" -- "n" Electivecourse
+Teacher "1" -- "n" Electivecourse
+Experiment  "n" -- "1" Course
+Score  "n" -- "1" Scoreitem
+Score  "n" -- "1" Student
+Score  "n" -- "1" Experiment
+@enduml
