@@ -1,0 +1,41 @@
+@startuml
+autonumber
+hide footbox
+actor teacher as ls
+participant 操作界面 as jm
+participant term as xq
+participant electivecourse as xk
+participant experiment as sy
+participant student as xs
+participant scoreitem as pfx
+ls->jm:选择某学期某课程的实验
+activate ls
+activate jm
+jm->xq:查询学期
+activate xq
+xq->jm:返回数据
+deactivate xq
+jm->xk:查询该学期下老师选的课
+activate xk
+xk->jm:返回数据
+deactivate xk
+jm->sy:查询课程的所属实验
+activate sy
+sy->jm:返回实验
+deactivate sy
+jm->xs:查询需要做这些实验的学生
+activate xs
+xs->jm:返回学生列表
+deactivate xs
+jm->ls:显示该试验下需要评分的学生
+ls->jm:选择某学生进行评分
+jm->pfx:查询该学生该试验下的评分项
+activate pfx
+pfx->jm:返回数据
+jm->ls:显示评分输入表单
+ls->jm:输入评分
+jm->pfx:添加评分
+deactivate pfx
+deactivate jm
+deactivate ls
+@enduml

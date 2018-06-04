@@ -1,0 +1,50 @@
+@startuml
+autonumber
+hide footbox
+actor teacher as ls
+participant 操作界面 as jm
+participant term as xq
+participant electivecourse as xk
+participant course as kc
+participant experiment as sy
+participant score as cj
+participant student as xs
+participant scoreitem as pfx
+ls->jm:选择学期
+activate jm
+activate ls
+jm->xq:查询学期
+activate xq
+xq->xk:查询老师所选的课程\n并且这些课程是当前\n学期
+activate xk
+xk->kc:查询课程详细信息
+activate kc
+kc->xk:返回课程详细信息
+deactivate kc
+xk->xq:返回结果
+deactivate xk
+xq->jm:返回课程信息
+deactivate xq
+jm->sy:查询这些课程的实验
+activate sy
+sy->jm:返回实验列表
+deactivate sy
+jm->xk:查询选了这些课程的学生
+activate xk
+xk->xs:查询学生详细信息
+activate xs
+xs->xk:返回
+deactivate xs
+xk->jm:返回学生列表
+deactivate xk
+jm->cj:根据实验和学生查询成绩
+activate cj
+cj->pfx:查询单个实验的所有得分项得分情况
+activate pfx
+pfx->cj:返回实验得分
+deactivate pfx
+cj->jm:返回结果
+jm->ls:显示数据
+deactivate jm
+deactivate ls
+@enduml

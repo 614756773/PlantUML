@@ -1,0 +1,32 @@
+@startuml
+autonumber
+hide footbox
+actor student as s
+participant 查看实验界面 as c
+participant electivecourse as e
+participant course
+participant experiment as ex
+participant teacher as t
+s->c:访问
+activate s
+activate c
+c->c:是已登录的学生
+activate c #SkyBlue
+c->e:请求该学生所选的实验id
+activate e
+e->c:返回所有实验的id
+deactivate e
+c->ex:请求所有的实验
+activate ex
+ex->c:返回实验
+deactivate
+c->course:请求实验所属的课程
+activate course
+course->t:查询授课老师
+activate t
+t->course:返回
+deactivate t
+course->c:返回课程，授课老师
+c->s:显示数据：授课老师,\n课程和实验
+deactivate c
+@enduml
