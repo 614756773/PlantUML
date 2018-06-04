@@ -1,0 +1,30 @@
+@startuml
+autonumber
+hide footbox
+actor teacher as t
+participant 查看课程界面 as c
+participant electivecourse as e
+participant student
+activate t
+t->c:login()
+activate c
+c-->c:success
+activate c #SkyBlue
+c->e:请求已选课程列表
+activate e
+e->c:返回列表
+deactivate e
+group 老师浏览已选课程
+    c->t:显示数据
+    t->c:浏览自己已选课程
+end
+group 浏览哪些学生选了自己的课
+    t->c:查看选择当前课程的学生
+    c->student:请求学生列表
+    activate student
+    student->c:返回列表
+    deactivate student
+    c->t:显示数据
+end
+deactivate c
+@enduml

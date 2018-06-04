@@ -1,0 +1,25 @@
+@startuml
+autonumber
+hide footbox
+actor teacher as t
+participant 选课界面 as x
+participant course
+participant electivecourse as e
+activate t
+t->x:login()
+activate x
+x-->x:success
+activate x #SkyBlue
+x->course:查询课程列表
+activate course
+course->x:返回列表
+deactivate course
+t->x:选择需要添加的课程
+x->e:增加选课
+activate e
+e->x:成功
+deactivate e
+x->t:选课成功
+deactivate x
+deactivate t
+@enduml
